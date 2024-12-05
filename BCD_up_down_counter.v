@@ -24,3 +24,22 @@ always@(posedge clk or posedge reset)begin
   end
 end
 endmodule
+
+
+module main( 
+  input [3:0]a,
+  input [3:0]b,
+  output [7:0]product,
+);
+  
+  assign a <= 4'b1000
+  assign b <= 4'b0000
+  wire pp0, pp1, pp2, pp3;
+  assign pp0 <= a & {4{b[0]}};
+  assign pp1 <= a & {4{b[1]}};
+  assign pp2 <= a & {4{b[2]}};
+  assign pp3 <= a & {4{b[3]}};
+  
+  assign product = pp0 + (pp1 << 1)+(pp2 << 2)+(pp3 << 3);
+endmodule
+
